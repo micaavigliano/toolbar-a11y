@@ -9,7 +9,7 @@ import {
   ArrowDropDown,
 } from "@mui/icons-material";
 import { useDispatch } from "react-redux";
-import { toggleBold } from "./store/textSlice";
+import { toggleBold, toggleItalic, toggleUnderline } from "./store/textSlice";
 
 const Toolbar = () => {
   const dispatch = useDispatch();
@@ -22,28 +22,34 @@ const Toolbar = () => {
         >
           <FormatBold />
         </button>
-        <span className="p-3 rounded-lg bg-white mr-2">
+        <button
+          className="p-3 rounded-lg bg-white mr-2"
+          onClick={() => dispatch(toggleItalic())}
+        >
           <FormatItalic />
-        </span>
-        <span className="p-3 rounded-lg bg-white">
+        </button>
+        <button
+          className="p-3 rounded-lg bg-white"
+          onClick={() => dispatch(toggleUnderline())}
+        >
           <FormatUnderlined />
-        </span>
+        </button>
       </div>
       <div className="w-fit">
-        <span className="p-3 rounded-lg bg-white mr-2">
+        <button className="p-3 rounded-lg bg-white mr-2">
           <FormatAlignLeft />
-        </span>
-        <span className="p-3 rounded-lg bg-white mr-2">
+        </button>
+        <button className="p-3 rounded-lg bg-white mr-2">
           <FormatAlignCenter />
-        </span>
-        <span className="p-3 rounded-lg bg-white">
+        </button>
+        <button className="p-3 rounded-lg bg-white">
           <FormatAlignRight />
-        </span>
+        </button>
       </div>
       <div>
-        <span className="p-3 rounded-lg bg-white mr-2">Copy</span>
-        <span className="p-3 rounded-lg bg-white mr-2">Paste</span>
-        <span className="p-3 rounded-lg bg-white">Cut</span>
+        <button className="p-3 rounded-lg bg-white mr-2">Copy</button>
+        <button className="p-3 rounded-lg bg-white mr-2">Paste</button>
+        <button className="p-3 rounded-lg bg-white">Cut</button>
       </div>
       <div>
         <select name="font family" className="p-3 rounded-lg bg-white">
@@ -57,12 +63,12 @@ const Toolbar = () => {
       <div>
         <div className="flex flex-row p-2.5 rounded-lg bg-white">
           <p>text</p>
-          <span className="bg-gray-500 rounded-lg">
+          <button className="bg-gray-500 rounded-lg p-0">
             <ArrowDropUp />
-          </span>
-          <span className="bg-gray-500 rounded-lg">
+          </button>
+          <button className="bg-gray-500 rounded-lg p-0">
             <ArrowDropDown />
-          </span>
+          </button>
         </div>
       </div>
     </div>
