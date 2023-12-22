@@ -8,14 +8,20 @@ import {
   ArrowDropUp,
   ArrowDropDown,
 } from "@mui/icons-material";
+import { useDispatch } from "react-redux";
+import { toggleBold } from "./store/textSlice";
 
 const Toolbar = () => {
+  const dispatch = useDispatch();
   return (
-    <div className="flex flex-row gap-6 items-center bg-gray-500 h-fit p-2">
+    <div className="flex flex-row gap-6 items-center bg-gray-500 h-fit p-2 w-full">
       <div className="w-fit">
-        <span className="p-3 rounded-lg bg-white mr-2">
+        <button
+          className="p-3 rounded-lg bg-white mr-2 border-none"
+          onClick={() => dispatch(toggleBold())}
+        >
           <FormatBold />
-        </span>
+        </button>
         <span className="p-3 rounded-lg bg-white mr-2">
           <FormatItalic />
         </span>
