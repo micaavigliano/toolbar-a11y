@@ -8,11 +8,14 @@ import {
   ArrowDropUp,
   ArrowDropDown,
 } from "@mui/icons-material";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "./store/types";
 import { toggleBold, toggleItalic, toggleUnderline } from "./store/textSlice";
 
 const Toolbar = () => {
   const dispatch = useDispatch();
+  const isSelected = useSelector((state: RootState) => state.textSelected)
+
   return (
     <div className="flex flex-row gap-6 items-center bg-gray-500 h-fit p-2 w-full">
       <div className="w-fit">
@@ -47,7 +50,7 @@ const Toolbar = () => {
         </button>
       </div>
       <div>
-        <button className="p-3 rounded-lg bg-white mr-2">Copy</button>
+        <button className="p-3 rounded-lg bg-white mr-2" disabled={!isSelected.isSelected}>Copy</button>
         <button className="p-3 rounded-lg bg-white mr-2">Paste</button>
         <button className="p-3 rounded-lg bg-white">Cut</button>
       </div>
