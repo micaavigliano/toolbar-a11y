@@ -7,6 +7,9 @@ const textSlice = createSlice({
     isItalic: false,
     isUnderline: false,
     isSelected: false,
+    isLeft: false,
+    isMiddle: false,
+    isRight: false,
   },
   reducers: {
     toggleBold: (state) => {
@@ -20,9 +23,32 @@ const textSlice = createSlice({
     },
     toggleSelected: (state, action: PayloadAction<boolean>) => {
       state.isSelected = action.payload;
-    }
+    },
+    toggleLeft: (state) => {
+      state.isLeft = !state.isLeft;
+      state.isMiddle = false;
+      state.isRight = false;
+    },
+    toggleMiddle: (state) => {
+      state.isMiddle = !state.isMiddle;
+      state.isRight = false;
+      state.isLeft = false;
+    },
+    toggleRight: (state) => {
+      state.isRight = !state.isRight;
+      state.isMiddle = false;
+      state.isLeft = false;
+    },
   },
 });
 
-export const { toggleBold, toggleItalic, toggleUnderline, toggleSelected } = textSlice.actions;
+export const {
+  toggleBold,
+  toggleItalic,
+  toggleUnderline,
+  toggleLeft,
+  toggleMiddle,
+  toggleRight,
+  toggleSelected,
+} = textSlice.actions;
 export default textSlice.reducer;
